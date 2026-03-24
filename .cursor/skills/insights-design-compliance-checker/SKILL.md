@@ -19,14 +19,23 @@ structured compliance report.
 
 ### Step 1: Identify Inputs
 
-The user provides two things:
+The user provides the design source. The guideline source defaults to the
+Predictive Insights Sub-library unless the user explicitly provides an
+alternative.
 
 | Input | What to look for |
 |-------|-----------------|
 | **Design source** | v0 URL, Figma URL, local component file, or screenshot |
-| **Guideline source** | Confluence page URL, Google Doc, local markdown file, or any URL |
+| **Guideline source** | Defaults to the **Predictive Insights Sub-library** Confluence page (see below). User may override with a different URL or file. |
 
-If either is missing, ask for it before proceeding.
+**Default guideline source:**
+- URL: `https://procoretech.atlassian.net/wiki/spaces/UX/pages/3950346282/Predictive+Insights+Sub-library`
+- Confluence `cloudId`: `procoretech.atlassian.net`
+- Confluence `pageId`: `3950346282`
+
+If the design source is missing, ask for it before proceeding. The guideline
+source does NOT need to be provided — always fetch the default unless the user
+supplies an alternative.
 
 ### Step 2: Fetch the Design
 
@@ -54,7 +63,17 @@ Resolve the design source using the best available method:
 
 ### Step 3: Fetch the Guidelines
 
-Resolve the guideline source:
+If the user did not provide an alternative guideline source, fetch the default:
+
+```
+CallMcpTool  server: user-atlassian
+             toolName: getConfluencePage
+             arguments: { "cloudId": "procoretech.atlassian.net",
+                          "pageId": "3950346282",
+                          "contentFormat": "markdown" }
+```
+
+If the user provides a different guideline source, resolve it:
 
 **Confluence page** (URL contains `atlassian.net/wiki`):
 1. Extract `cloudId` (the subdomain, e.g. `mycompany.atlassian.net`) and
@@ -164,3 +183,8 @@ Prioritized list of the most impactful gaps to close, ordered by severity
   evaluate based on the text description surrounding the image.
 - When guidelines are ambiguous, flag the item as "Partial / Needs Clarification"
   rather than guessing.
+- **Reference implementation**: The "Design Issue Predictions" v0 chat
+  (`e5iqXhPGae1`) is a fully-compliant Insights card. Use `getChat` with that
+  ID to fetch its component source as a reference for what "good" looks like
+  (header structure, banner format, section layout, footer actions, ellipsis
+  menu, empty state, company/project toggle).
