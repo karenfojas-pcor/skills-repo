@@ -44,9 +44,10 @@ Analyze Gong call transcripts stored in Snowflake for any Procore product or fea
 
 ### [insights-design-compliance-checker](.cursor/skills/insights-design-compliance-checker/)
 
-Review a design artifact (from v0, Figma, or local files) against a guideline document (from Confluence, URLs, or local files) and produce a structured compliance report with compliant/non-compliant items and recommendations.
+Review a design artifact (from v0, Figma, or local files) against the [Predictive Insights Sub-library](https://procoretech.atlassian.net/wiki/spaces/UX/pages/3950346282/Predictive+Insights+Sub-library) guidelines and produce a structured compliance report with compliant/non-compliant items and recommendations. The guideline source defaults to the Predictive Insights Sub-library Confluence page — just provide a design URL and go.
 
 **Trigger phrases:**
+- "check compliance on this [v0/Figma URL]"
 - "review design compliance"
 - "check design against guidelines"
 - "audit design"

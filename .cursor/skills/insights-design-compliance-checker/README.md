@@ -1,6 +1,6 @@
 # Insights Design Compliance Checker
 
-Review any design artifact against a guideline document and produce a structured compliance report. Supports designs from v0, Figma, local files, or any URL, and guidelines from Confluence, local files, or any URL.
+Review any design artifact against the [Predictive Insights Sub-library](https://procoretech.atlassian.net/wiki/spaces/UX/pages/3950346282/Predictive+Insights+Sub-library) guidelines and produce a structured compliance report. Supports designs from v0, Figma, local files, or any URL. The guideline source defaults to the Predictive Insights Sub-library Confluence page — no need to provide it each time.
 
 ## How It Works
 
@@ -8,11 +8,10 @@ The skill runs a 6-step workflow:
 
 ### Step 1: Identify Inputs
 
-You provide two things:
+You provide the design source:
 - **Design source** — a v0 URL, Figma URL, local component file, or screenshot
-- **Guideline source** — a Confluence page URL, Google Doc, local markdown file, or any URL
 
-If either is missing, the agent asks for it.
+The **guideline source** defaults to the [Predictive Insights Sub-library](https://procoretech.atlassian.net/wiki/spaces/UX/pages/3950346282/Predictive+Insights+Sub-library) Confluence page. You can override this with a different URL or file if needed.
 
 ### Step 2: Fetch the Design
 
@@ -24,7 +23,7 @@ The agent resolves the design source automatically:
 
 ### Step 3: Fetch the Guidelines
 
-Similarly resolves the guideline source:
+Fetches the Predictive Insights Sub-library from Confluence by default (page ID `3950346282`). If you provide an alternative guideline source:
 - **Confluence** — fetches page content via the Atlassian MCP server
 - **Local file** — reads directly
 - **Other URL** — fetches via web
@@ -56,11 +55,14 @@ Generates a structured report with:
 ## Example Usage
 
 ```
-You: "review design compliance"
-Agent: "What's the design source?"
-You: [paste v0 or Figma URL]
-Agent: "What are the guidelines?"
-You: [paste Confluence URL]
+You: "check compliance on this v0 https://v0.app/chat/design-workforce-gap-upP6dLoc1Tf"
+Agent: [fetches design from v0, fetches Predictive Insights Sub-library from Confluence, evaluates, produces compliance report]
+```
+
+You can also provide a custom guideline source:
+
+```
+You: "check this design against this spec" [design URL] [guideline URL]
 Agent: [fetches both, evaluates, produces compliance report]
 ```
 
