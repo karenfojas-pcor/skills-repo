@@ -56,12 +56,30 @@ Review a design artifact (from v0, Figma, or local files) against the [Predictiv
 
 ### [one-on-one-prep](.cursor/skills/one-on-one-prep/)
 
-Prepare for weekly 1:1 meetings by walking through priorities, blockers, decisions, progress, and commitments to produce a ready-to-use prep document.
+Employee-driven 1:1 meeting preparation with optional goals threading. Consolidates priorities, blockers, decisions, progress, and commitments into 6 lean sections designed for a 20-minute meeting. Connects to your goals document (Google Doc, Confluence, or local file) to tag priorities and generate a weekly goals pulse check.
+
+**How it works:**
+
+1. **First run** — Interactive setup asks where your goals live and your meeting preferences, then generates a personal config file automatically.
+2. **Weekly prep** — Walks through 6 sections, seeds with context from git/Jira/Slack activity, threads goal tags throughout, and produces a tight, scannable prep doc.
+3. **Output** — Saves to `~/Documents/OneOnOnes/YYYY-MM-DD_1on1_prep.md` with bullet-first formatting, inline recommendations, and a goals pulse table.
 
 **Trigger phrases:**
-- "1:1 prep"
-- "prepare for 1:1"
-- "weekly prep"
+- "prepare for my 1:1" / "1:1 prep" — Full prep (~20 min)
+- "quick 1:1 prep" — Priorities + blockers + commitments (~5 min)
+- "review last 1:1" — Check commitment status, carry forward
+- "setup 1:1 prep" — Reconfigure goals source and preferences
+
+**Files:**
+| File | Purpose |
+|------|---------|
+| `SKILL.md` | Entry point with workflow routing and section overview |
+| `OneOnOneTemplate.md` | Output format template |
+| `PREFERENCES.template.md` | Documented config template — copy and customize |
+| `Workflows/Prepare.md` | Full 6-section prep workflow |
+| `Workflows/QuickPrep.md` | Fast prep (priorities + blockers + commitments) |
+| `Workflows/Review.md` | Commitment review and carry-forward |
+| `Workflows/Setup.md` | Interactive first-run configuration |
 
 ---
 
