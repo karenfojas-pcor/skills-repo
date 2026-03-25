@@ -1,85 +1,94 @@
-# 1:1 Template Reference
+# 1:1 Output Template
 
-The canonical 1:1 template sections and their prompting questions. Used by workflows to structure prep docs.
+Lean, scannable format designed for a 20-minute meeting. Used by Prepare and QuickPrep workflows to generate the final prep doc.
 
-## Section 1: Top Priorities & Outcomes
+## Output Format
 
-**Prompt questions:**
-- What are the 2-3 most important outcomes you're driving right now?
-- What does success look like before the next 1:1?
+```markdown
+## 1:1 Prep — [DATE]
 
-**Output fields:**
-- My focus this week: (2-3 bullet points)
+**One-line context:** [What's the main theme or shift this week?]
 
-## Section 2: Blockers & Proposed Solutions
+---
 
-**Prompt questions:**
-- Where are you stuck?
-- What have you already tried?
-- What do you recommend we do next?
+### Commitment Review
 
-**Output fields per blocker:**
-- Context:
-- Options considered:
-- My recommendation:
+| Commitment | Status |
+|-----------|--------|
+| [outcome from last week] | **Done** / **In progress** — [brief note] / **Carry forward** |
 
-## Section 3: Decisions Needed
+---
 
-**Prompt questions:**
-- What decisions are pending?
-- What's your proposed call?
+### 1. Priorities (G#)
 
-**Output fields per decision:**
-- Context:
-- Options:
-- My recommendation:
+- **[Priority 1]** — [one-line detail] (G#)
+- **[Priority 2]** — [one-line detail] (G#)
+- **[Priority 3]** — [one-line detail] (G#)
 
-## Section 4: Progress & Learnings
+---
 
-**Prompt questions:**
-- What moved forward since last time?
-- What didn't go as expected?
-- What would you do differently?
+### 2. Blockers, Decisions & Asks
 
-**Output fields:**
-- Wins: (bullet points)
-- Learnings: (bullet points)
+- **[Topic]** — [context]. *Rec:* [recommendation]. *Ask:* [what you need] / *No ask.*
+- **[Topic]** — [context]. *Rec:* [recommendation]. *Ask:* [what you need] / *No ask.*
 
-## Section 5: Prioritization Check
+[If none: "No blockers — momentum is strong."]
 
-**Prompt questions:**
-- Are you working on the highest-impact things?
-- What should you stop, start, or deprioritize?
+---
 
-**Output fields:**
-- Stop:
-- Start:
-- Continue:
+### 3. Progress & Learnings
 
-## Section 6: Support Needed from Manager or Leadership
+**Wins:**
+- [win] (G#)
+- [win] (G#)
 
-**Prompt questions:**
-- Where do you need help?
-- What can I do to unblock or accelerate you?
+**Learnings:**
+- [one learning, max two]
 
-**Output fields:**
-- Specific asks: (bullet points)
+---
 
-## Section 7: Commitments Before Next 1:1
+### 4. Commitments
 
-**Prompt questions:**
-- What will you deliver?
-- By when?
+| Outcome | Due | Goal |
+|---------|-----|------|
+| [outcome] | [date] | G# |
+| [outcome] | [date] | G# |
+| *Stretch:* [outcome] | [date] | G# |
 
-**Output fields per commitment:**
-- Outcome:
-- Due date:
+---
 
-## Section 8: Growth & Ownership (Optional)
+### 5. Goals Pulse
 
-**Prompt questions:**
-- What responsibility do you want to take on next?
-- Where do you want to stretch?
+| Goal | Status | This week |
+|------|--------|-----------|
+| G1: [short name] | Strong / Steady / Seeding / Stalled | [1-line] |
+| G2: [short name] | Strong / Steady / Seeding / Stalled | [1-line] |
+| G3: [short name] | Strong / Steady / Seeding / Stalled | [1-line] |
+| G4: [short name] | Strong / Steady / Seeding / Stalled | [1-line] |
+```
 
-**Output fields:**
-- Growth focus:
+**Note:** If goals are not configured, omit the `(G#)` tags and the Goals Pulse section entirely. The rest of the template works standalone.
+
+## Formatting Rules
+
+- **Bullets over paragraphs.** Always.
+- **One line per item.** Context only when non-obvious.
+- **Bold the key noun/topic,** then brief detail after an em dash.
+- **Goal tags** in parentheses: `(G1)`, `(G2)`, etc. Only if goals are configured.
+- **No redundancy.** If captured in one section, don't repeat in another.
+- **Blockers/Decisions/Asks** use inline format: `*Rec:* [X]. *Ask:* [Y].`
+- **Stretch commitments** are italicized with the `*Stretch:*` prefix.
+- **Prioritization check** is folded into the Priorities section — only note stop/start/deprioritize if there's an actual change. Don't include a separate section for "continue everything."
+- **Support needed** is folded into Blockers, Decisions & Asks — the "Ask" field captures what you need from your manager. No separate section.
+- **Growth & Ownership** is folded into Goals Pulse — the growth focus shows up as movement on the goals, not as a separate discussion.
+
+## Section Reference (for interactive prompting)
+
+| Section | Time | Prompting questions |
+|---------|------|-------------------|
+| Commitment Review | 2 min | Which are done, in progress, or carrying forward? |
+| Priorities | 3 min | 2-3 most important outcomes? What does success look like? |
+| Blockers/Decisions/Asks | 5 min | Where stuck? Decisions pending? What do you need? Proposed path forward? |
+| Progress & Learnings | 3 min | What moved forward? What would you do differently? |
+| Commitments | 3 min | What will you deliver? By when? |
+| Goals Pulse | 4 min | Does this pulse check feel accurate? (Only if goals configured) |

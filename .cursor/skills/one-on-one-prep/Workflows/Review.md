@@ -15,53 +15,52 @@ If found, read the most recent file.
 
 ## Step 2: Extract and Present Commitments
 
-Parse Section 7 (Commitments) from the most recent prep. Present them:
+Parse the Commitments section from the most recent prep. Present them:
 
 ```
-📋 Commitments from [DATE]:
+Commitments from [DATE]:
 
-1. [Outcome] — Due: [date]
-2. [Outcome] — Due: [date]
+| # | Outcome | Due | Goal |
+|---|---------|-----|------|
+| 1 | [outcome] | [date] | G# |
+| 2 | [outcome] | [date] | G# |
 ```
+
+**Note:** If the prep doc doesn't have goal tags, omit the Goal column.
 
 ## Step 3: Status Check
 
 Ask the user for status on each commitment:
 
 > **For each commitment, what's the status?**
-> - ✅ Done
-> - 🔄 In progress (what's left?)
-> - ❌ Dropped (why?)
-> - ➡️ Carry forward (new due date?)
+> - Done
+> - In progress (what's left?)
+> - Dropped (why?)
+> - Carry forward (new due date?)
 
 ## Step 4: Surface Other Follow-ups
 
 Also check the previous prep for:
-- **Unresolved blockers** (Section 2) — Are these still blocking?
-- **Pending decisions** (Section 3) — Were these decided?
-- **Support asks** (Section 6) — Did you get the help you needed?
-- **Growth focus** (Section 8) — Any progress on this?
+- **Unresolved blockers/decisions/asks** — Are these still open?
+- **Goals pulse** — Any shifts in goal momentum since then? (Only if goals were tracked)
 
 Present anything that looks unresolved and ask if it should carry forward.
 
 ## Step 5: Generate Review Summary
 
-Present a clean summary:
-
 ```
-📊 1:1 Review — [DATE of reviewed prep]
+1:1 Review — [DATE of reviewed prep]
 
 COMMITMENTS:
-✅ Done: [count]
-🔄 In progress: [count]
-❌ Dropped: [count]
-➡️ Carry forward: [count]
+- Done: [count]
+- In progress: [count]
+- Dropped: [count]
+- Carry forward: [count]
 
 CARRY-FORWARD ITEMS:
-- [item] — new due date: [date]
-- [item] — new due date: [date]
+- [item] — new due date: [date] (G#)
 
-UNRESOLVED FROM LAST WEEK:
+OPEN FROM LAST WEEK:
 - [blocker/decision/ask if any]
 ```
 

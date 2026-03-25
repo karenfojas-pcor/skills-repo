@@ -1,6 +1,6 @@
 # QuickPrep Workflow
 
-Fast 1:1 preparation focused on the essentials. Covers priorities, blockers, and commitments only — the three sections that drive the most value in a 1:1.
+Fast 1:1 preparation when time is short. Covers commitment review, priorities, blockers/decisions, and new commitments — with optional goals threading. ~5 minutes.
 
 ## Step 1: Setup
 
@@ -9,93 +9,114 @@ Fast 1:1 preparation focused on the essentials. Covers priorities, blockers, and
    mkdir -p ~/Documents/OneOnOnes
    ```
 
-2. **Check for previous 1:1 prep:**
+2. **Load preferences:**
+   Check for PREFERENCES.md in this order:
+   1. `~/.claude/PAI/USER/SKILLCUSTOMIZATIONS/OneOnOnePrep/PREFERENCES.md`
+   2. `~/.config/OneOnOnePrep/PREFERENCES.md`
+
+   If found, load goals source and goal short names for tagging.
+
+   **If neither exists:** Do NOT run full setup — QuickPrep should stay fast. Instead, note:
+   > No preferences configured — running without goals threading. Run "setup 1:1 prep" to connect your goals document.
+
+3. **Load goals document (if configured):**
+   If configured, fetch it. Use goal short names for tagging. If not configured, skip all goal tagging.
+
+4. **Check for previous 1:1 prep:**
    ```bash
    ls -t ~/Documents/OneOnOnes/*.md 2>/dev/null | head -1
    ```
    If found, read it to surface last week's commitments.
 
-3. **Set the date:**
+5. **Set the date:**
    ```bash
    DATE=$(date +%Y-%m-%d)
    ```
 
 ## Step 2: Quick Commitment Review
 
-If a previous prep exists, show last week's commitments:
+If a previous prep exists, show last week's commitments as a table:
 
 ```
-📋 Last week's commitments:
-1. [Outcome] — Due: [date] — Status: ?
+Last week's commitments:
+| # | Commitment | Due |
+|---|-----------|-----|
+| 1 | [outcome] | [date] |
 ```
 
-Ask: **Quick status on each — done, in progress, or dropping?**
+Ask: **Quick status on each — done, in progress, or carrying forward?**
 
-## Step 3: Three Essential Questions
+## Step 3: Three Essential Sections
 
-Ask these three questions in sequence. Keep it tight — one round per section.
+Ask these in sequence. Keep it tight — one round per section.
 
 ### Priorities
-> **What are your top 2-3 priorities this week? What does "done" look like for each?**
+> **Top 2-3 priorities this week? What does "done" look like?**
 
-### Blockers
-> **Anything blocking you? If so, what's your proposed solution?**
+Tag each to a goal number if goals are configured.
 
-If no blockers, move on immediately.
+### Blockers & Decisions
+> **Anything blocking you or needing a decision? If so, what's your recommendation?**
+
+If nothing, move on immediately.
 
 ### Commitments
-> **What will you deliver before the next 1:1, and by when?**
+> **What will you deliver before next 1:1, and by when?**
 
-Carry forward any incomplete items from last week.
+Carry forward any incomplete items from last week. Tag to goals if configured.
 
 ## Step 4: Generate Quick Prep Document
 
 Write to: `~/Documents/OneOnOnes/${DATE}_1on1_prep.md`
 
 ```markdown
-## Weekly 1:1 Prep — [DATE] (Quick)
+## 1:1 Prep — [DATE] (Quick)
 
 ---
 
-### 1. 🎯 Top Priorities & Outcomes
+### Commitment Review
 
-**My focus this week:**
-- [priority 1]
-- [priority 2]
-
----
-
-### 2. 🚧 Blockers & Proposed Solutions
-
-[Blockers or "No blockers this week."]
+| Commitment | Status |
+|-----------|--------|
+| [outcome] | **Done** / **In progress** / **Carry forward** |
 
 ---
 
-### 4. 📈 Progress (from last week)
+### 1. Priorities
 
-[Status of last week's commitments]
-
----
-
-### 7. 🚀 Commitments Before Next 1:1
-
-| Outcome | Due Date |
-|---------|----------|
-| [outcome 1] | [date] |
-| [outcome 2] | [date] |
+- **[Priority 1]** — [detail] (G#)
+- **[Priority 2]** — [detail] (G#)
 
 ---
 
-*Quick prep — sections 3, 5, 6, 8 skipped. Run full prep with "prepare for my 1:1" if needed.*
+### 2. Blockers, Decisions & Asks
+
+- **[Topic]** — [context]. *Rec:* [X]. *Ask:* [Y].
+
+[Or: "No blockers — momentum is strong."]
+
+---
+
+### 3. Commitments
+
+| Outcome | Due | Goal |
+|---------|-----|------|
+| [outcome] | [date] | G# |
+
+---
+
+*Quick prep — Progress, Goals Pulse skipped. Run full prep with "prepare for my 1:1" if needed.*
 ```
+
+**Note:** Omit the Goal column and all `(G#)` tags if goals are not configured.
 
 ## Step 5: Done
 
 ```
-✅ Quick 1:1 prep saved to ~/Documents/OneOnOnes/[DATE]_1on1_prep.md
+1:1 prep saved to ~/Documents/OneOnOnes/[DATE]_1on1_prep.md
 
-Covered: Priorities, Blockers, Commitments
-Skipped: Decisions, Prioritization Check, Support Needed, Growth
+Covered: Commitment review, Priorities, Blockers/Decisions, Commitments
+Skipped: Progress & Learnings, Goals Pulse
 
 Need the full version? Say "prepare for my 1:1"
 ```
